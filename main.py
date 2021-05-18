@@ -15,7 +15,11 @@ def autochecklist():
         antidict[i[1]] = i[0]
     dict = {}
     for i in a:
-        temp = model.parse(i[1])
+        if i[1] in model.sheet_names:
+            temp = model.parse(i[1])
+        else:
+            print('请检查用例切页是否命名正确')
+            return 0
         dict[i[1]] = temp.values
     No = []  # 编号列
     func1 = []  # 功能点一
